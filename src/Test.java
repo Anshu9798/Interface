@@ -1,16 +1,27 @@
 
-public class Test {
-
-	public static void main(String[] args) {
+public class DecimalFormatter implements NumberFormatter
+{
+	public String format(int n)
+	{
+		String s = new Integer(n).toString();
+		int length = s.length();
 		
-		DefaultFormatter n = new DefaultFormatter();
-		DecimalFormatter p = new DecimalFormatter();
-		BaseTwoFormatter w = new BaseTwoFormatter();
-		
-		System.out.println(n.format(1000000000));
-		System.out.println(p.format(1000000000));
-		System.out.println(w.format(15));
+		String reverse = "";
+		for(int i =1; i<length+1; i++)
+		{
+			reverse += s.charAt(length-i);
+			 if(i%3 == 0 && i!=length)
+			 {
+				 reverse+= ".";
+			 }
+		}
+		String finished = "";
+		for(int i=0; i<reverse.length(); i++)
+		{
+			int dookie = (reverse.length()-1)-i;
 
+			finished += reverse.charAt(dookie);
+		}
+		return finished;
 	}
-
 }
